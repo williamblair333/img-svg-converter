@@ -16,7 +16,10 @@ sg.ChangeLookAndFeel('Reddit')
 layout =  [sg.Text('Image Source ', size=(15, 1)), sg.InputText(), \
            sg.FileBrowse()], [sg.Submit(), sg.Cancel()]
 
-window = sg.Window('Image to SVG Converter - Insert IT Dept Name Here', layout)
+window = sg.Window('Image to SVG Converter - Insert IT Dept Name Here', \
+                   layout, icon = "C:\\util\\Python\\Python36\\image_name.ico")
+
+#icon = "C:\\util\\Python\\Python36\\wtfd_patch.ico"
 
 event, values = window.read()
 window.close()
