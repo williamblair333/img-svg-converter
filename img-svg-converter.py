@@ -1,18 +1,22 @@
+# Program name: ivy-svg-converter.py                                            #
+# Author: William Blair                                                         #
+# Date: 9/21/2020                                                               #
+# Purpose:                                                                      #
+# PySimpleGUI program that will more easily allow the user to                   #   
+# 1. Convert image files to svg format                                          #
+#                                                                               #
+
 import PySimpleGUI as sg
-#from pathlib import Path
 import pathlib
 import os
 import subprocess
 
 sg.ChangeLookAndFeel('Reddit')
 
-layout = [#[sg.Text('Click Rename files or folders')],
-          #[sg.Text('Source for Folders', size=(15, 1)), sg.InputText(), sg.FolderBrowse()],
-          [sg.Text('Image Source ', size=(15, 1)), sg.InputText(), sg.FileBrowse()],
-          #[sg.InputText('This is my text', size=(15, 1))],
+layout =  [sg.Text('Image Source ', size=(15, 1)), sg.InputText(), sg.FileBrowse()],
           [sg.Submit(), sg.Cancel()]]
 
-window = sg.Window('Image to SVG Converter - Wayne Township IT Department', layout)
+window = sg.Window('Image to SVG Converter - Insert IT Dept Name Here', layout)
 
 event, values = window.read()
 window.close()
@@ -29,10 +33,13 @@ dest_filename = str(src_pathname) + "\\" + (os.path.splitext(os.path.basename(sr
 src_filename = src_filename.replace("/", "\\")
 
 print(src_filename)
-#print (src_pathname)
 print(dest_filename)
 
+# You will need to install ImageMagick in order to do the actual conversion. 
+# Change path as appropriate for location and OS
 conversion = "C:\\util\\ImageMagick-7.0.10-30-portable-Q16-HDRI-x64\\magick.exe" + " " + src_filename + " " + dest_filename
 
 print(conversion)
 subprocess.call(conversion)
+
+#################################################################################
